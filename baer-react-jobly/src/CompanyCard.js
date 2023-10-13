@@ -1,10 +1,14 @@
 import React from "react";
 
-const CompanyCard = () => {
+import "./Card.css";
+
+
+const CompanyCard = ({company}) => {
 
     return(
-        <div>
-            A Company!
+        <div className="Card">
+            <h4>{company.name}</h4>
+            <p>{company.description}</p>
         </div>
     )
 
