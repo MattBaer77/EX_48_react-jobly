@@ -1,6 +1,6 @@
 import React from "react";
 
-const CompanyList = () => {
+const CompaniesList = () => {
 
     return (
 
@@ -10,4 +10,4 @@ const CompanyList = () => {
 
 };
 
-export default CompanyList;
+export default CompaniesList;

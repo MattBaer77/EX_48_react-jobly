@@ -3,7 +3,7 @@ import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 
 import Home from './Home'
-import CompanyList from './CompanyList'
+import CompaniesList from './CompaniesList'
 
 const Router = () => {
 
@@ -12,10 +12,10 @@ const Router = () => {
         <Routes>
 
           <Route exact path="/" element={<Home />} />
-          <Route path="/companies" element={<CompanyList />} />
+          <Route path="/companies" element={<CompaniesList />} />
           {/* <Route path="/companies/:handle" element={<CompanyDetail />} /> */}
 
-          {/* <Route path="/jobs" element={<JobList />} /> */}
+          {/* <Route path="/jobs" element={<JobsList />} /> */}
 
           {/* <Route path="/login" element={<LoginForm />} /> */}
           {/* <Route path="/signup" element={<SignupForm />} /> */}
