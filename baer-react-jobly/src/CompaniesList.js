@@ -1,10 +1,16 @@
 import React from "react";
 
+import CompanyCard from "./CompanyCard"
+
 const CompaniesList = () => {
 
     return (
 
-        <div>Shows a list of companies</div>
+        <div className="CompaniesList">
+
+            <CompanyCard />
+
+        </div>
 
     )
 
