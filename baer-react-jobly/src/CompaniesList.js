@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 
 import JoblyApi from "./Api.js"
 import CompanyCard from "./CompanyCard"
+import SearchForm from "./SearchForm.js";
 
 import "./CompaniesList.css";
 
@@ -34,6 +35,12 @@ const CompaniesList = () => {
 
     }, []);
 
+    // const search = () => {
+
+
+
+    // }
+
     if (isLoading) {
 
         return <p>Loading Companies...</p>
@@ -42,13 +49,20 @@ const CompaniesList = () => {
 
     if (error) {
 
-        return <p>Error: {error.message}.</p>
+        return (
+        <div>
+            <h3>Error Loading Companies</h3>
+            <p>{error.message}.</p>
+        </div>
+        )
 
     }
 
     return (
 
         <div className="CompaniesList">
+
+            <SearchForm/>
 
             {companies.map(c => <CompanyCard company={c}/>)}
 
