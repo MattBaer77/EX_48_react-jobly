@@ -1,14 +1,15 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
-const SearchForm = () => {
+const SearchForm = ( {handleSearch} ) => {
 
     const INITIAL_STATE = {
         searchTerms:""
     }
 
     const [formData, setFormData] = useState(INITIAL_STATE);
+    const [initialRender, setInitialRender] = useState(true)
 
-    const handleChange = (e) => {
+    const handleChange = async (e) => {
 
         const {name, value} = e.target;
 
@@ -21,15 +22,31 @@ const SearchForm = () => {
 
     }
 
+    useEffect(() => {
+
+        async function reactiveSearch() {
+
+            if (initialRender) {
+                setInitialRender(false)
+                return;
+            }
+
+            console.log(formData)
+            const searchParam = {...formData}
+            await handleSearch(searchParam)
+
+        }
+        
+        reactiveSearch()
+
+    },[formData])
+
     const handleSubmit = async (e) => {
 
         e.preventDefault();
         const searchParam = {...formData}
-        console.log(searchParam)
+        await handleSearch(searchParam)
 
-        // await updateItems(category, dataToSend)
-        setFormData(INITIAL_STATE);
-        // history.push(('/'+companies)) ?
     }
 
     return (

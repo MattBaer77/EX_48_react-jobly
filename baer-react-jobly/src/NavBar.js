@@ -6,7 +6,7 @@ function NavBar() {
     return(
         <div className="NavBar">
 
-            <NavLink exact to={'/companies'}>Companies</NavLink>
+            <NavLink exact="true" to={'/companies'}>Companies</NavLink>
             {/* <NavLink exact to={'/jobs'}>Jobs</NavLink> */}
 
         </div>

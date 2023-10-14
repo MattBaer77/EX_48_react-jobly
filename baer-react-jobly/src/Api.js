@@ -38,9 +38,23 @@ class JoblyApi {
 
   /** Get details on all companies. */
 
-  static async getCompanies() {
-    let res = await this.request(`companies`);
-    return res.companies;
+  static async getCompanies(search) {
+
+    if (search) {
+
+      console.log("Search!")
+
+      let res = await this.request(`companies`, search);
+      return res.companies;
+
+    } else {
+
+      console.log("No Search")
+
+      let res = await this.request(`companies`);
+      return res.companies;
+
+    }
   }
 
   /** Get details on a company by handle. <= THIS WAS THE PROVIDED EXAMPLE */

@@ -35,11 +35,24 @@ const CompaniesList = () => {
 
     }, []);
 
-    // const search = () => {
+    const handleSearch = async (data) => {
 
+        console.log(data)
 
+        if (!data.searchTerms){
 
-    // }
+            let companies = await JoblyApi.getCompanies()
+            setCompanies([...companies])
+
+        } else {
+
+            const nameSearch = { name: data.searchTerms}
+            let companies = await JoblyApi.getCompanies(nameSearch)
+            setCompanies([...companies])
+
+        }
+
+    }
 
     if (isLoading) {
 
@@ -62,9 +75,9 @@ const CompaniesList = () => {
 
         <div className="CompaniesList">
 
-            <SearchForm/>
+            <SearchForm handleSearch={handleSearch}/>
 
-            {companies.map(c => <CompanyCard company={c}/>)}
+            {companies.map(c => <CompanyCard key={c.handle} company={c}/>)}
 
         </div>
 
