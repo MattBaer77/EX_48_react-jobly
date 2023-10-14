@@ -54,6 +54,21 @@ const CompaniesList = () => {
 
     }
 
+    if (companies.length === 0) {
+        return (
+
+            <div className="List">
+
+                <SearchForm handleSearch={handleSearch}/>
+
+                <h2>No companies match your search criteria.</h2>
+
+            </div>
+
+        )
+
+    }
+
     if (isLoading) {
 
         return <p>Loading Companies...</p>

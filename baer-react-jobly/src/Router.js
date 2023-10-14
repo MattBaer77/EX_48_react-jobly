@@ -4,6 +4,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 
 import Home from './Home'
 import CompaniesList from './CompaniesList'
+import CompanyDetail from './CompanyDetail'
 import JobsList from './JobsList'
 
 const Router = () => {
@@ -14,7 +15,7 @@ const Router = () => {
 
           <Route exact path="/" element={<Home />} />
           <Route path="/companies" element={<CompaniesList />} />
-          {/* <Route path="/companies/:handle" element={<CompanyDetail />} /> */}
+          <Route path="/companies/:handle" element={<CompanyDetail />} />
 
           <Route path="/jobs" element={<JobsList />} />
 

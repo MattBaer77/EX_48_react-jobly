@@ -54,6 +54,21 @@ const JobsList = () =>{
 
     }
 
+    if (jobs.length === 0) {
+        return (
+
+            <div className="List">
+
+                <SearchForm handleSearch={handleSearch}/>
+
+                <h2>No jobs match your search criteria.</h2>
+
+            </div>
+
+        )
+
+    }
+
     if (isLoading) {
 
         return <p>Loading Companies...</p>
