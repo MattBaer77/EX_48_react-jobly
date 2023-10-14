@@ -4,7 +4,7 @@ import JoblyApi from "./Api.js"
 import CompanyCard from "./CompanyCard"
 import SearchForm from "./SearchForm.js";
 
-import "./CompaniesList.css";
+import "./List.css";
 
 const CompaniesList = () => {
 
@@ -73,7 +73,7 @@ const CompaniesList = () => {
 
     return (
 
-        <div className="CompaniesList">
+        <div className="List">
 
             <SearchForm handleSearch={handleSearch}/>
 

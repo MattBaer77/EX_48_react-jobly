@@ -36,7 +36,7 @@ const SearchForm = ( {handleSearch} ) => {
             await handleSearch(searchParam)
 
         }
-        
+
         reactiveSearch()
 
     },[formData])
@@ -53,7 +53,7 @@ const SearchForm = ( {handleSearch} ) => {
 
         <form onSubmit={handleSubmit}>
 
-            <label htmlFor="searchTerms">Search: </label>
+            <label hidden="hidden" htmlFor="searchTerms">Search: </label>
             <input
                 type="text"
                 placeholder="Enter a search term"
