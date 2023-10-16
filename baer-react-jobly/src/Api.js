@@ -50,7 +50,7 @@ class JoblyApi {
 
   static async signUp(userInfo) {
 
-    let res = await this.request(`/auth/register`, userInfo)
+    let res = await this.request(`auth/register`, userInfo, "post")
 
     console.log(res)
 

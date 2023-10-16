@@ -40,7 +40,9 @@ const SignupForm = () => {
 
         console.log(userInfo)
 
+        const token = await JoblyApi.signUp(userInfo)
 
+        console.log(token)
 
     }
 
