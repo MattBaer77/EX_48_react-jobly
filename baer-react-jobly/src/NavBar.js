@@ -9,6 +9,9 @@ function NavBar() {
             <NavLink exact="true" to={'/companies'}>Companies</NavLink>
             <NavLink exact="true" to={'/jobs'}>Jobs</NavLink>
 
+            <NavLink exact="true" to={'/login'}>Log In</NavLink>
+            <NavLink exact="true" to={'/signup'}>Sign Up</NavLink>
+
         </div>
     )
 

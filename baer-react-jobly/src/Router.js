@@ -7,6 +7,10 @@ import CompaniesList from './CompaniesList'
 import CompanyDetail from './CompanyDetail'
 import JobsList from './JobsList'
 
+import LoginForm from './LoginForm'
+import SignupForm from './SignupForm'
+// import ProfileEditForm from './ProfileEditForm'
+
 const Router = () => {
 
     return(
@@ -19,8 +23,8 @@ const Router = () => {
 
           <Route path="/jobs" element={<JobsList />} />
 
-          {/* <Route path="/login" element={<LoginForm />} /> */}
-          {/* <Route path="/signup" element={<SignupForm />} /> */}
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/signup" element={<SignupForm />} />
           {/* <Route path="/profile" element={<ProfileEditForm />} /> */}
     
           <Route path="*" element={<Navigate to='/' />}/>
