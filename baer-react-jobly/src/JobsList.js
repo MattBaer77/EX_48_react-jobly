@@ -1,4 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
+
+import UserContext from "./UserContext.js";
 
 import JoblyApi from "./Api.js"
 import JobCard from "./JobCard.js"
@@ -7,6 +9,10 @@ import SearchForm from "./SearchForm.js";
 import "./List.css";
 
 const JobsList = () =>{
+
+    const {currentUser} = useContext(UserContext)
+
+    console.log(currentUser)
 
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null)
@@ -18,7 +24,7 @@ const JobsList = () =>{
 
             try {
 
-                let jobs = await JoblyApi.getJobs();
+                let jobs = await currentUser.apiHelper.getJobs();
                 setJobs([...jobs])
     
                 setIsLoading(false);

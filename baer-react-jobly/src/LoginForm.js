@@ -1,10 +1,17 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 
-import JoblyApi from "./Api.js"
+// import JoblyApi from "./Api.js"
+
+import UserContext from "./UserContext.js";
 
 import './StandAloneForm.css'
 
 const LoginForm = () => {
+
+    const {login} = useContext(UserContext)
+
+    // console.log(currentUser)
+    // console.log(login)
 
     const INITIAL_STATE = {
 
@@ -34,12 +41,11 @@ const LoginForm = () => {
 
         e.preventDefault();
         const userInfo = {...formData}
-
         console.log(userInfo)
+        // const token = await JoblyApi.loginUser(userInfo)
+        // console.log(token)
 
-        const token = await JoblyApi.loginUser(userInfo)
-
-        console.log(token)
+        login(userInfo)
 
     }
 
