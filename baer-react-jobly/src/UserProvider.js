@@ -5,47 +5,65 @@ import JoblyApi from './Api';
 
 const UserProvider = ({children}) => {
 
-    console.log("contexting")
+    console.log("IN CONTEXT - UserProvider")
 
     const INITIAL_STATE = {
-        userName:"",
+        username:"",
         token:"",
-        apiHelper:""
+        apiHelper:"",
+        firstName:"",
+        lastName:"",
+        email:"",
+        applications:[]
     }
 
     const [currentUser, setCurrentUser] = useState(INITIAL_STATE)
 
     console.log(currentUser)
 
-    const login = async (userInfo) => {
+    const login = async (userInput) => {
 
-        console.log(userInfo)
+        console.log(userInput)
 
-        const token = await JoblyApi.loginUser(userInfo)
+        try {
 
-        console.log(userInfo)
+            const token = await JoblyApi.loginUser(userInput)
 
-        if (token) {
+            console.log(userInput)
+    
+            if (token) {
+    
+                console.log(userInput)
+    
+                const apiHelper = JoblyApi;
+    
+                apiHelper.token = token;
 
-            console.log(userInfo)
+                const { user } = await apiHelper.getUserInfo(userInput.username)
+    
+                setCurrentUser(() => {
+    
+                    console.log(user)
+    
+                    return {
+    
+                        username : user.username,
+                        token : token,
+                        apiHelper : apiHelper,
+                        firstName : user.firstName,
+                        lastName : user.lastName,
+                        email : user.email,
+                        applications : user.applications
+    
+                    }
+    
+                })
+    
+            }
 
-            const helper = JoblyApi;
+        } catch (e) {
 
-            helper.token = token;
-
-            setCurrentUser(() => {
-
-                console.log(userInfo)
-
-                return {
-
-                    userName:userInfo.username,
-                    token:token,
-                    apiHelper:helper
-
-                }
-
-            })
+            throw e
 
         }
   

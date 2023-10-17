@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
+
+import UserContext from "./UserContext.js";
 
 import {useParams} from "react-router-dom"
 
-import JoblyApi from "./Api.js"
 import JobCard from "./JobCard.js";
 
 import "./List.css";
@@ -10,6 +11,10 @@ import "./List.css";
 const CompanyDetail = () => {
 
     const {handle} = useParams()
+
+    const {currentUser} = useContext(UserContext)
+
+    console.log(currentUser)
 
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null)
@@ -20,7 +25,7 @@ const CompanyDetail = () => {
         async function getCompany() {
 
             try {
-                let company = await JoblyApi.getCompany(handle);
+                let company = await currentUser.apiHelper.getCompany(handle);
                 setCompany(company);
 
                 setIsLoading(false);
@@ -35,6 +40,20 @@ const CompanyDetail = () => {
         getCompany()
 
     }, [])
+
+    if (!currentUser.userName && !currentUser.token && !currentUser.apiHelper) {
+
+        return (
+
+            <div className="List">
+
+                <h2>Login to view this company.</h2>
+
+            </div>
+
+        )
+
+    }
 
     if (isLoading) {
 

@@ -21,6 +21,7 @@ const LoginForm = () => {
     }
 
     const [formData, setFormData] = useState(INITIAL_STATE);
+    const [error, setError] = useState(null)
 
     const handleChange = (e) => {
 
@@ -40,18 +41,28 @@ const LoginForm = () => {
     const handleSubmit = async(e) => {
 
         e.preventDefault();
-        const userInfo = {...formData}
-        console.log(userInfo)
-        // const token = await JoblyApi.loginUser(userInfo)
-        // console.log(token)
+        const userInput = {...formData}
+        console.log(userInput)
 
-        login(userInfo)
+        try {
+
+            await login(userInput)
+            setError(null)
+
+        } catch(e) {
+
+            console.log(e)
+            setError(e)
+        }
+
 
     }
 
     return (
 
         <div className="StandAloneForm">
+            
+            <p className="Error">{error}</p>
 
         <form onSubmit={handleSubmit}>
 

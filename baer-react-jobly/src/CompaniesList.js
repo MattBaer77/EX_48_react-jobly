@@ -1,12 +1,16 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 
-import JoblyApi from "./Api.js"
 import CompanyCard from "./CompanyCard"
 import SearchForm from "./SearchForm.js";
 
 import "./List.css";
+import UserContext from "./UserContext.js";
 
 const CompaniesList = () => {
+
+    const {currentUser} = useContext(UserContext)
+
+    console.log(currentUser)
 
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null)
@@ -18,7 +22,7 @@ const CompaniesList = () => {
 
             try {
 
-                let companies = await JoblyApi.getCompanies();
+                let companies = await currentUser.apiHelper.getCompanies();
                 setCompanies([...companies])
     
                 setIsLoading(false);
@@ -41,16 +45,30 @@ const CompaniesList = () => {
 
         if (!data.searchTerms){
 
-            let companies = await JoblyApi.getCompanies()
+            let companies = await currentUser.apiHelper.getCompanies();
             setCompanies([...companies])
 
         } else {
 
             const nameSearch = { name: data.searchTerms}
-            let companies = await JoblyApi.getCompanies(nameSearch)
+            let companies = await currentUser.apiHelper.getCompanies(nameSearch)
             setCompanies([...companies])
 
         }
+
+    }
+
+    if (!currentUser.userName && !currentUser.token && !currentUser.apiHelper) {
+
+        return (
+
+            <div className="List">
+
+                <h2>Login to view companies.</h2>
+
+            </div>
+
+        )
 
     }
 

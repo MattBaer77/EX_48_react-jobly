@@ -2,7 +2,6 @@ import React, {useState, useEffect, useContext} from "react";
 
 import UserContext from "./UserContext.js";
 
-import JoblyApi from "./Api.js"
 import JobCard from "./JobCard.js"
 import SearchForm from "./SearchForm.js";
 
@@ -47,16 +46,30 @@ const JobsList = () =>{
 
         if (!data.searchTerms){
 
-            let jobs = await JoblyApi.getJobs()
+            let jobs = await currentUser.apiHelper.getJobs();
             setJobs([...jobs])
 
         } else {
 
             const titleSearch = { title: data.searchTerms}
-            let jobs = await JoblyApi.getJobs(titleSearch)
+            let jobs = await currentUser.apiHelper.getJobs(titleSearch);
             setJobs([...jobs])
 
         }
+
+    }
+
+    if (!currentUser.userName && !currentUser.token && !currentUser.apiHelper) {
+
+        return (
+
+            <div className="List">
+
+                <h2>Login to view jobs.</h2>
+
+            </div>
+
+        )
 
     }
 
