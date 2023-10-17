@@ -1,12 +1,14 @@
 import React, {useContext, useState} from "react";
 
-// import JoblyApi from "./Api.js"
+import { useNavigate } from "react-router-dom";
 
 import UserContext from "./UserContext.js";
 
 import './StandAloneForm.css'
 
 const SignupForm = () => {
+
+    const navigate = useNavigate()
 
     const {signup} = useContext(UserContext)
 
@@ -49,6 +51,7 @@ const SignupForm = () => {
 
             await signup(userInput)
             setError(null)
+            navigate('/')
 
         } catch (e) {
 
