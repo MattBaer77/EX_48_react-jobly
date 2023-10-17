@@ -8,6 +8,8 @@ const UserProvider = ({children}) => {
 
     console.log("IN CONTEXT - UserProvider")
 
+    const localStorage = window.localStorage
+
     const INITIAL_STATE = {
         username:"",
         token:"",
@@ -43,6 +45,8 @@ const UserProvider = ({children}) => {
             }
 
         });
+
+        localStorage.setItem('token', token)
 
     }
 
@@ -85,7 +89,16 @@ const UserProvider = ({children}) => {
     const logout = async () => {
 
         setCurrentUser(INITIAL_STATE)
+        localStorage.clear()
 
+    }
+
+    const storedToken = localStorage.getItem('token')
+
+    console.log(storedToken)
+
+    if (storedToken) {
+        loadUser(storedToken)
     }
 
     return (
