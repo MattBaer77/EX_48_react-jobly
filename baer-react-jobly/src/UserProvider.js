@@ -64,6 +64,24 @@ const UserProvider = ({children}) => {
   
     }
 
+    const signup = async (userInput) => {
+
+        console.log(userInput)
+
+        try {
+
+            const token = await JoblyApi.signUp(userInput)
+
+            console.log(userInput)
+
+            loadUser(token)
+    
+        } catch (e) {
+            throw e
+        }
+  
+    }
+
     const logout = async () => {
 
         setCurrentUser(INITIAL_STATE)
@@ -71,7 +89,7 @@ const UserProvider = ({children}) => {
     }
 
     return (
-        <UserContext.Provider value={{currentUser, login, logout}}>
+        <UserContext.Provider value={{currentUser, login, logout, signup}}>
             {children}
         </UserContext.Provider>
     )

@@ -1,10 +1,14 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 
-import JoblyApi from "./Api.js"
+// import JoblyApi from "./Api.js"
+
+import UserContext from "./UserContext.js";
 
 import './StandAloneForm.css'
 
 const SignupForm = () => {
+
+    const {signup} = useContext(UserContext)
 
     const INITIAL_STATE = {
 
@@ -17,6 +21,7 @@ const SignupForm = () => {
     }
 
     const [formData, setFormData] = useState(INITIAL_STATE);
+    const [error, setError] = useState(null)
 
     const handleChange = (e) => {
 
@@ -36,19 +41,33 @@ const SignupForm = () => {
     const handleSubmit = async(e) => {
 
         e.preventDefault();
-        const userInfo = {...formData}
+        const userInput = {...formData}
 
-        console.log(userInfo)
+        console.log(userInput)
 
-        const token = await JoblyApi.signUp(userInfo)
+        try {
 
-        console.log(token)
+            await signup(userInput)
+            setError(null)
+
+        } catch (e) {
+
+            console.log(e)
+            setError(e)
+            
+        }
+
+        // const token = await JoblyApi.signUp(userInput)
+
+        // console.log(token)
 
     }
 
     return (
 
         <div className="StandAloneForm">
+
+        <p className="Error">{error}</p>
 
         <form onSubmit={handleSubmit}>
 

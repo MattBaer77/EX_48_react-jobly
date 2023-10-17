@@ -62,7 +62,7 @@ const LoginForm = () => {
 
         <div className="StandAloneForm">
             
-            <p className="Error">{error}</p>
+        <p className="Error">{error}</p>
 
         <form onSubmit={handleSubmit}>
 
