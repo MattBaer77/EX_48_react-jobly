@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import UserContext from './UserContext';
 
 import JoblyApi from './Api';
@@ -10,15 +10,17 @@ const UserProvider = ({children}) => {
 
     const localStorage = window.localStorage
 
-    const INITIAL_STATE = {
-        username:"",
-        token:"",
-        apiHelper:"",
-        firstName:"",
-        lastName:"",
-        email:"",
-        applications:[]
-    }
+    // const INITIAL_STATE = {
+    //     username:"",
+    //     token:"",
+    //     apiHelper:"",
+    //     firstName:"",
+    //     lastName:"",
+    //     email:"",
+    //     applications:[]
+    // }
+
+    const INITIAL_STATE = {}
 
     const [currentUser, setCurrentUser] = useState(INITIAL_STATE)
 
@@ -97,9 +99,13 @@ const UserProvider = ({children}) => {
 
     console.log(storedToken)
 
-    if (storedToken) {
-        loadUser(storedToken)
-    }
+    useEffect(() => {
+
+        if (storedToken) {
+            loadUser(storedToken)
+        }
+
+    },[])
 
     return (
         <UserContext.Provider value={{currentUser, login, logout, signup}}>
