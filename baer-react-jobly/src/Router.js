@@ -9,6 +9,7 @@ import JobsList from './JobsList'
 
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
+import Logout from './Logout'
 // import ProfileEditForm from './ProfileEditForm'
 
 const Router = () => {
@@ -25,6 +26,7 @@ const Router = () => {
 
           <Route path="/login" element={<LoginForm />} />
           <Route path="/signup" element={<SignupForm />} />
+          <Route path="/logout" element={<Logout />} />
           {/* <Route path="/profile" element={<ProfileEditForm />} /> */}
     
           <Route path="*" element={<Navigate to='/' />}/>

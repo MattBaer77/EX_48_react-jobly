@@ -41,7 +41,7 @@ const UserProvider = ({children}) => {
                 email : user.email,
                 applications : user.applications
             }
-            
+
         });
 
     }
@@ -64,8 +64,14 @@ const UserProvider = ({children}) => {
   
     }
 
+    const logout = async () => {
+
+        setCurrentUser(INITIAL_STATE)
+
+    }
+
     return (
-        <UserContext.Provider value={{currentUser, login}}>
+        <UserContext.Provider value={{currentUser, login, logout}}>
             {children}
         </UserContext.Provider>
     )
