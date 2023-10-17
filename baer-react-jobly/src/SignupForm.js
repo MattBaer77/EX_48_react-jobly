@@ -54,12 +54,8 @@ const SignupForm = () => {
 
             console.log(e)
             setError(e)
-            
+
         }
-
-        // const token = await JoblyApi.signUp(userInput)
-
-        // console.log(token)
 
     }
 
