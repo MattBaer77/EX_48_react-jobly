@@ -1,5 +1,7 @@
 import React, {useState, useEffect, useContext} from "react";
 
+import { Navigate } from "react-router-dom";
+
 import UserContext from "./UserContext.js";
 
 import JobCard from "./JobCard.js"
@@ -16,6 +18,12 @@ const JobsList = () =>{
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null)
     const [jobs, setJobs] = useState([]);
+
+    if (!currentUser.token) {
+
+        return <Navigate to='/'/>
+
+    }
 
     useEffect(() => {
 

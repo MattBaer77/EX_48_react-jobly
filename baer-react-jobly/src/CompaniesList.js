@@ -1,5 +1,7 @@
 import React, {useState, useEffect, useContext} from "react";
 
+import { Navigate } from "react-router-dom";
+
 import CompanyCard from "./CompanyCard"
 import SearchForm from "./SearchForm.js";
 
@@ -15,6 +17,12 @@ const CompaniesList = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null)
     const [companies, setCompanies] = useState([]);
+
+    if (!currentUser.token) {
+
+        return <Navigate to='/'/>
+
+    }
 
     useEffect(() => {
 

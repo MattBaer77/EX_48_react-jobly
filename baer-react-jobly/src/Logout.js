@@ -7,7 +7,7 @@ import UserContext from "./UserContext";
 
 const Logout = () => {
 
-    const {logout} = useContext(UserContext)
+    const {currentUser, logout} = useContext(UserContext)
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -17,6 +17,11 @@ const Logout = () => {
 
     }, [])
 
+    if (!currentUser.token) {
+
+        return <Navigate to='/'/>
+
+    }
 
     if (!isLoading) {
 

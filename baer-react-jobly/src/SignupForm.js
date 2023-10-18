@@ -1,6 +1,6 @@
 import React, {useContext, useState} from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 import UserContext from "./UserContext.js";
 
@@ -10,7 +10,7 @@ const SignupForm = () => {
 
     const navigate = useNavigate()
 
-    const {signup} = useContext(UserContext)
+    const {currentUser, signup} = useContext(UserContext)
 
     const INITIAL_STATE = {
 
@@ -24,6 +24,12 @@ const SignupForm = () => {
 
     const [formData, setFormData] = useState(INITIAL_STATE);
     const [error, setError] = useState(null)
+
+    if (currentUser.token) {
+
+        return <Navigate to='/'/>
+
+    }
 
     const handleChange = (e) => {
 

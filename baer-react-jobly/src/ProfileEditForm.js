@@ -12,12 +12,6 @@ const ProfileEditForm = () => {
 
     const {currentUser, edit} = useContext(UserContext)
 
-    if (!currentUser.token) {
-
-        return <Navigate to='/login'/>
-
-    }
-
     const INITIAL_STATE = {
 
         firstName:currentUser.firstName,
@@ -28,6 +22,12 @@ const ProfileEditForm = () => {
 
     const [formData, setFormData] = useState(INITIAL_STATE);
     const [error, setError] = useState(null)
+
+    if (!currentUser.token) {
+
+        return <Navigate to='/login'/>
+
+    }
 
     const handleChange = (e) => {
 

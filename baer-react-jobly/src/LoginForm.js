@@ -1,6 +1,6 @@
 import React, {useContext, useState} from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 import UserContext from "./UserContext.js";
 
@@ -10,7 +10,7 @@ const LoginForm = () => {
 
     const navigate = useNavigate()
 
-    const {login} = useContext(UserContext)
+    const {currentUser, login} = useContext(UserContext)
 
     const INITIAL_STATE = {
 
@@ -21,6 +21,12 @@ const LoginForm = () => {
 
     const [formData, setFormData] = useState(INITIAL_STATE);
     const [error, setError] = useState(null)
+
+    if (currentUser.token) {
+
+        return <Navigate to='/'/>
+
+    }
 
     const handleChange = (e) => {
 
