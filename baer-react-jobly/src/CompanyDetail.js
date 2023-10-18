@@ -2,9 +2,10 @@ import React, {useState, useEffect, useContext} from "react";
 
 import UserContext from "./UserContext.js";
 
-import {useParams} from "react-router-dom"
+import {useParams, NavLink} from "react-router-dom"
 
 import JobCard from "./JobCard.js";
+import SearchForm from "./SearchForm.js";
 
 import "./List.css";
 
@@ -19,6 +20,7 @@ const CompanyDetail = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null)
     const [company, setCompany] = useState(null)
+    const [jobs, setJobs] = useState([]);
 
     useEffect(() => {
 
@@ -26,7 +28,9 @@ const CompanyDetail = () => {
 
             try {
                 let company = await currentUser.apiHelper.getCompany(handle);
+                console.log(company)
                 setCompany(company);
+                setJobs(company.jobs)
 
                 setIsLoading(false);
                 
@@ -40,6 +44,25 @@ const CompanyDetail = () => {
         getCompany()
 
     }, [])
+
+    const handleSearch = async (data) => {
+
+        console.log(data)
+
+        if (!data.searchTerms){
+
+            let jobs = company.jobs
+            setJobs([...jobs])
+
+        } else {
+
+            let jobs = company.jobs.filter((job) => job.title.includes(data.searchTerms))
+            console.log(jobs)
+            setJobs([...jobs])
+
+        }
+
+    }
 
     if (!currentUser.userName && !currentUser.token && !currentUser.apiHelper) {
 
@@ -66,7 +89,8 @@ const CompanyDetail = () => {
         return (
         <div>
             <h3>Error Loading Company</h3>
-            <p>{error.message}.</p>
+            {/* <p>{error.message}.</p> */}
+            <NavLink exact="true" to={'/companies'}>Back to Companies</NavLink>
         </div>
         )
 
@@ -78,7 +102,9 @@ const CompanyDetail = () => {
             <h2>{company.name}</h2>
             <p>{company.description}</p>
 
-            {company.jobs.map(j => <JobCard key={j.id} job={j}/>)}
+            <SearchForm handleSearch={handleSearch}/>
+
+            {jobs.map(j => <JobCard key={j.id} job={j}/>)}
 
         </div>
     )

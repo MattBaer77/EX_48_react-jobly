@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from "react";
 
-import { Navigate } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
 
 import UserContext from "./UserContext.js";
 
@@ -98,7 +98,7 @@ const JobsList = () =>{
 
     if (isLoading) {
 
-        return <p>Loading Companies...</p>
+        return <p>Loading Jobs...</p>
 
     }
 
@@ -106,8 +106,11 @@ const JobsList = () =>{
 
         return (
         <div>
-            <h3>Error Loading Companies</h3>
-            <p>{error.message}.</p>
+            <h3>Error Loading Jobs</h3>
+            {/* <p>{error.message}.</p> */}
+
+            <NavLink exact="true" to={'/'}>Back to Home</NavLink>
+
         </div>
         )
 

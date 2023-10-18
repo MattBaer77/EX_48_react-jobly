@@ -1,6 +1,6 @@
 import React, {useContext, useState} from "react";
 
-import { useNavigate, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import UserContext from "./UserContext.js";
 
@@ -8,7 +8,7 @@ import './StandAloneForm.css'
 
 const ProfileEditForm = () => {
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     const {currentUser, edit} = useContext(UserContext)
 
@@ -21,6 +21,7 @@ const ProfileEditForm = () => {
     }
 
     const [formData, setFormData] = useState(INITIAL_STATE);
+    const [success, toggleSuccess] = useState("")
     const [error, setError] = useState(null)
 
     if (!currentUser.token) {
@@ -57,7 +58,7 @@ const ProfileEditForm = () => {
 
             await edit(userInput, currentUser.username)
             setError(null)
-            navigate('/')
+            toggleSuccess("Profile updated.")
 
         } catch (e) {
 
@@ -73,6 +74,7 @@ const ProfileEditForm = () => {
         <div className="StandAloneForm">
 
         <p className="Error">{error}</p>
+        <p className="Success">{success}</p>
 
         <form onSubmit={handleSubmit}>
 
@@ -119,7 +121,7 @@ const ProfileEditForm = () => {
                 onChange={handleChange}
             />
 
-            <button>Edit Profile</button>
+            <button>Save Changes</button>
 
         </form>
 

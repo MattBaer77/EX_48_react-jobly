@@ -64,7 +64,7 @@ class JoblyApi {
 
     console.log(res)
 
-    return res.token
+    return res
 
   }
 
