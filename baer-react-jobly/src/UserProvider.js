@@ -133,6 +133,7 @@ const UserProvider = ({children}) => {
     useEffect(() => {
 
         if (storedToken) {
+            console.log("LOADING USER! FROM TOKEN")
             loadUser(storedToken)
         }
 

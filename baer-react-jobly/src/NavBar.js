@@ -17,7 +17,7 @@ function NavBar() {
                 <NavLink exact="true" to={'/jobs'}>Jobs</NavLink>
     
                 <NavLink exact="true" to={'/edit'}>Edit Profile</NavLink>
-                <NavLink exact="true" to={'/logout'}>Log Out</NavLink>
+                <NavLink exact="true" to={'/logout'}>Log Out {currentUser.username}</NavLink>
     
             </div>
         )
