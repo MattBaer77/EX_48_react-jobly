@@ -131,7 +131,20 @@ class JoblyApi {
     }
   }
 
-  /** Get details on a job by id. */
+  /** Apply to a job. */
+
+  static async applyJob(id, username) {
+
+    console.log(id)
+    console.log(username)
+
+    let res = await this.request(`users/${username}/jobs/${id}`, null, "post")
+
+    return res
+
+  }
+
+  /** Get details on a job by id. - NOT USED */
 
   static async getJob(id) {
     let res = await this.request(`jobs/${id}`);
