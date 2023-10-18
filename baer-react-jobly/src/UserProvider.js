@@ -10,16 +10,6 @@ const UserProvider = ({children}) => {
 
     const localStorage = window.localStorage
 
-    // const INITIAL_STATE = {
-    //     username:"",
-    //     token:"",
-    //     apiHelper:"",
-    //     firstName:"",
-    //     lastName:"",
-    //     email:"",
-    //     applications:[]
-    // }
-
     const INITIAL_STATE = {}
 
     const [currentUser, setCurrentUser] = useState(INITIAL_STATE)
