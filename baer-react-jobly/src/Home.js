@@ -14,7 +14,7 @@ const Home = () => {
 
             <div>
 
-                <span>Welcome back {currentUser.username}!</span>
+                <span>Welcome back {currentUser.firstName}!</span>
 
             </div>
 

@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from "react";
 
 import UserContext from "./UserContext.js";
 
-import {useParams, NavLink} from "react-router-dom"
+import {useParams, NavLink, Navigate} from "react-router-dom"
 
 import JobCard from "./JobCard.js";
 import SearchForm from "./SearchForm.js";
@@ -21,6 +21,12 @@ const CompanyDetail = () => {
     const [error, setError] = useState(null)
     const [company, setCompany] = useState(null)
     const [jobs, setJobs] = useState([]);
+
+    if (!currentUser.token) {
+
+        return <Navigate to='/'/>
+
+    }
 
     useEffect(() => {
 
@@ -61,20 +67,6 @@ const CompanyDetail = () => {
             setJobs([...jobs])
 
         }
-
-    }
-
-    if (!currentUser.userName && !currentUser.token && !currentUser.apiHelper) {
-
-        return (
-
-            <div className="List">
-
-                <h2>Login to view this company.</h2>
-
-            </div>
-
-        )
 
     }
 
