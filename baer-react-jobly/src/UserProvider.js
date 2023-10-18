@@ -29,6 +29,10 @@ const UserProvider = ({children}) => {
     const loadUser = async (token) => {
 
         const {username} = jwtDecode(token)
+
+        console.log("USER INFO FROM TOKEN-")
+        console.log(jwtDecode(token))
+
         const apiHelper = JoblyApi;
         apiHelper.token = token;
         const { user } = await apiHelper.getUserInfo(username)
@@ -76,11 +80,29 @@ const UserProvider = ({children}) => {
 
         try {
 
-            const token = await JoblyApi.signUp(userInput)
+            const token = await JoblyApi.signUpUser(userInput)
 
             console.log(userInput)
 
             loadUser(token)
+    
+        } catch (e) {
+            throw e
+        }
+  
+    }
+
+    const edit = async (userInput, username) => {
+
+        console.log(userInput)
+
+        try {
+
+            await JoblyApi.editUser(userInput, username)
+
+            console.log(userInput)
+
+            loadUser(currentUser.token)
     
         } catch (e) {
             throw e
@@ -108,7 +130,7 @@ const UserProvider = ({children}) => {
     },[])
 
     return (
-        <UserContext.Provider value={{currentUser, login, logout, signup}}>
+        <UserContext.Provider value={{currentUser, login, signup, edit, logout}}>
             {children}
         </UserContext.Provider>
     )

@@ -48,9 +48,19 @@ class JoblyApi {
 
   }
 
-  static async signUp(userInfo) {
+  static async signUpUser(userInfo) {
 
     let res = await this.request(`auth/register`, userInfo, "post")
+
+    console.log(res)
+
+    return res.token
+
+  }
+
+  static async editUser(userInfo, username) {
+
+    let res = await this.request(`users/${username}`, userInfo, "patch")
 
     console.log(res)
 
