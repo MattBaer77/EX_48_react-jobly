@@ -66,10 +66,10 @@ const ProfileEditForm = () => {
 
     return (
 
-        <div className="Card">
+        <div className="Card StandAloneForm">
 
-        <p className="Error">{error}</p>
-        <p className="Success">{success}</p>
+        {error && <p className="Error">{error}</p>}
+        {success && <p className="Success">{success}</p>}
 
         <form onSubmit={handleSubmit}>
 
