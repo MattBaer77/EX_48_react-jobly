@@ -15,6 +15,10 @@ button {
 
 }
 
+button:hover {
+  text-decoration: underline;
+}
+
 input {
 
   background-color: rgb(230, 230, 230);
@@ -27,4 +31,25 @@ input {
 
   color: black;
 
+}
+
+.apply-button {
+
+  background-color: rgb(0, 165, 255);
+
+}
+
+.apply-button:hover {
+
+  background-color: rgb(0, 135, 230);
+  text-decoration: underline;
+
+}
+
+.apply-button-disabled {
+  background-color: grey;
+}
+.apply-button-disabled:hover {
+  background-color: grey;
+  text-decoration: none;
 }
