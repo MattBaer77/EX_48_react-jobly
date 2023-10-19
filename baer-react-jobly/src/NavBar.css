@@ -1,0 +1,29 @@
+.navbar {
+
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    background-color: black;
+    vertical-align: middle;
+    height: 40px;
+    padding: 10px;
+
+}
+
+.navbar a {
+    font-family: sans-serif;
+    text-decoration: none;
+    color: white;
+    margin: 10px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+.wordmark {
+
+    color:white;
+    margin-right: auto;
+
+}

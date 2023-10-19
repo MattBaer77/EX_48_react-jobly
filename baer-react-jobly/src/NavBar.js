@@ -4,6 +4,8 @@ import UserContext from "./UserContext";
 
 import { NavLink } from "react-router-dom";
 
+import "./NavBar.css";
+
 function NavBar() {
 
     const {currentUser} = useContext(UserContext)
@@ -11,7 +13,9 @@ function NavBar() {
     if (currentUser.token) {
 
         return(
-            <div className="NavBar">
+            <div className="navbar">
+
+                <h2 className="wordmark">Jobly.</h2>
     
                 <NavLink exact="true" to={'/companies'}>Companies</NavLink>
                 <NavLink exact="true" to={'/jobs'}>Jobs</NavLink>
@@ -25,7 +29,9 @@ function NavBar() {
     }
 
     return(
-        <div className="NavBar">
+        <div className="navbar">
+
+            <h2 className="wordmark">Jobly.</h2>
 
             <NavLink exact="true" to={'/login'}>Log In</NavLink>
             <NavLink exact="true" to={'/signup'}>Sign Up</NavLink>
