@@ -47,7 +47,6 @@ const LoginForm = () => {
 
         e.preventDefault();
         const userInput = {...formData}
-        console.log(userInput)
 
         try {
 
@@ -57,7 +56,6 @@ const LoginForm = () => {
 
         } catch(e) {
 
-            console.log(e)
             setError(e)
         }
 

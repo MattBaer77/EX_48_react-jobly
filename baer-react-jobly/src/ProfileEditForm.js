@@ -50,11 +50,7 @@ const ProfileEditForm = () => {
         e.preventDefault();
         let userInput = {...formData}
 
-        console.log(userInput)
-
         try {
-
-            console.log(currentUser.username)
 
             await edit(userInput, currentUser.username)
             setError(null)
@@ -62,7 +58,6 @@ const ProfileEditForm = () => {
 
         } catch (e) {
 
-            console.log(e)
             setError(e)
 
         }

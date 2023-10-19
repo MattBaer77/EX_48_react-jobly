@@ -12,8 +12,6 @@ const CompaniesList = () => {
 
     const {currentUser} = useContext(UserContext)
 
-    console.log(currentUser)
-
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null)
     const [companies, setCompanies] = useState([]);
@@ -48,8 +46,6 @@ const CompaniesList = () => {
     }, []);
 
     const handleSearch = async (data) => {
-
-        console.log(data)
 
         if (!data.searchTerms){
 

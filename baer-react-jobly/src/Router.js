@@ -11,7 +11,6 @@ import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
 import ProfileEditForm from './ProfileEditForm'
 import Logout from './Logout'
-// import ProfileEditForm from './ProfileEditForm'
 
 const Router = () => {
 
@@ -29,7 +28,6 @@ const Router = () => {
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/edit" element={<ProfileEditForm />} />
           <Route path="/logout" element={<Logout />} />
-          {/* <Route path="/profile" element={<ProfileEditForm />} /> */}
     
           <Route path="*" element={<Navigate to='/' />}/>
           

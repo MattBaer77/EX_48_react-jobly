@@ -13,8 +13,6 @@ const JobsList = () =>{
 
     const {currentUser} = useContext(UserContext)
 
-    console.log(currentUser)
-
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null)
     const [jobs, setJobs] = useState([]);
@@ -49,8 +47,6 @@ const JobsList = () =>{
     }, []);
 
     const handleSearch = async (data) => {
-
-        console.log(data)
 
         if (!data.searchTerms){
 

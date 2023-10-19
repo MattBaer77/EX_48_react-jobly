@@ -51,8 +51,6 @@ const SignupForm = () => {
         e.preventDefault();
         const userInput = {...formData}
 
-        console.log(userInput)
-
         try {
 
             await signup(userInput)
@@ -61,7 +59,6 @@ const SignupForm = () => {
 
         } catch (e) {
 
-            console.log(e)
             setError(e)
 
         }

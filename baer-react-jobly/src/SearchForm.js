@@ -31,7 +31,6 @@ const SearchForm = ( {handleSearch} ) => {
                 return;
             }
 
-            console.log(formData)
             const searchParam = {...formData}
             await handleSearch(searchParam)
 

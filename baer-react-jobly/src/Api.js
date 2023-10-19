@@ -42,8 +42,6 @@ class JoblyApi {
 
     let res = await this.request(`auth/token`, userInfo, "post")
 
-    console.log(res)
-
     return res.token
 
   }
@@ -51,8 +49,6 @@ class JoblyApi {
   static async signUpUser(userInfo) {
 
     let res = await this.request(`auth/register`, userInfo, "post")
-
-    console.log(res)
 
     return res.token
 
@@ -62,8 +58,6 @@ class JoblyApi {
 
     let res = await this.request(`users/${username}`, userInfo, "patch")
 
-    console.log(res)
-
     return res
 
   }
@@ -71,8 +65,6 @@ class JoblyApi {
   static async getUserInfo(username) {
 
     let res = await this.request(`users/${username}`)
-
-    console.log(res)
 
     return res
 
@@ -86,14 +78,10 @@ class JoblyApi {
 
     if (search) {
 
-      console.log("Search!")
-
       let res = await this.request(`companies`, search);
       return res.companies;
 
     } else {
-
-      console.log("No Search")
 
       let res = await this.request(`companies`);
       return res.companies;
@@ -116,14 +104,10 @@ class JoblyApi {
 
     if (search) {
 
-      console.log("Search!")
-
       let res = await this.request(`jobs`, search);
       return res.jobs;
 
     } else {
-
-      console.log("No Search")
 
       let res = await this.request(`jobs`);
       return res.jobs;
@@ -135,9 +119,6 @@ class JoblyApi {
 
   static async applyJob(id, username) {
 
-    console.log(id)
-    console.log(username)
-
     let res = await this.request(`users/${username}/jobs/${id}`, null, "post")
 
     return res
@@ -147,8 +128,11 @@ class JoblyApi {
   /** Get details on a job by id. - NOT USED */
 
   static async getJob(id) {
+
     let res = await this.request(`jobs/${id}`);
+
     return res.job;
+
   }
 
 
@@ -158,6 +142,5 @@ class JoblyApi {
 // JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
 //     "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
 //     "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
-
 
 export default JoblyApi;

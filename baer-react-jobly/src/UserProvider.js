@@ -6,22 +6,15 @@ import jwtDecode from 'jwt-decode';
 
 const UserProvider = ({children}) => {
 
-    console.log("IN CONTEXT - UserProvider")
-
     const localStorage = window.localStorage
 
     const INITIAL_STATE = {}
 
     const [currentUser, setCurrentUser] = useState(INITIAL_STATE)
 
-    console.log(currentUser)
-
     const loadUser = async (token) => {
 
         const {username} = jwtDecode(token)
-
-        console.log("USER INFO FROM TOKEN-")
-        console.log(jwtDecode(token))
 
         const apiHelper = JoblyApi;
         apiHelper.token = token;
@@ -29,7 +22,6 @@ const UserProvider = ({children}) => {
 
         setCurrentUser(() => {
 
-            console.log(user)
             return {
                 username : user.username,
                 token : token,
@@ -48,13 +40,9 @@ const UserProvider = ({children}) => {
 
     const login = async (userInput) => {
 
-        console.log(userInput)
-
         try {
 
             const token = await JoblyApi.loginUser(userInput)
-
-            console.log(userInput)
 
             loadUser(token)
     
@@ -66,13 +54,9 @@ const UserProvider = ({children}) => {
 
     const signup = async (userInput) => {
 
-        console.log(userInput)
-
         try {
 
             const token = await JoblyApi.signUpUser(userInput)
-
-            console.log(userInput)
 
             loadUser(token)
     
@@ -84,13 +68,9 @@ const UserProvider = ({children}) => {
 
     const edit = async (userInput, username) => {
 
-        console.log(userInput)
-
         try {
 
             await JoblyApi.editUser(userInput, username)
-
-            console.log(userInput)
 
             loadUser(currentUser.token)
     
@@ -102,14 +82,9 @@ const UserProvider = ({children}) => {
 
     const apply = async (id, username) => {
 
-        console.log(id)
-        console.log(username)
-
         try {
 
-            const msg = await JoblyApi.applyJob(id, username)
-
-            console.log(msg)
+            await JoblyApi.applyJob(id, username)
 
             loadUser(currentUser.token)
 
@@ -128,12 +103,10 @@ const UserProvider = ({children}) => {
 
     const storedToken = localStorage.getItem('token')
 
-    console.log(storedToken)
-
     useEffect(() => {
 
         if (storedToken) {
-            console.log("LOADING USER! FROM TOKEN")
+            
             loadUser(storedToken)
         }
 

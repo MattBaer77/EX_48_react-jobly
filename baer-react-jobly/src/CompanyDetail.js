@@ -15,8 +15,6 @@ const CompanyDetail = () => {
 
     const {currentUser} = useContext(UserContext)
 
-    console.log(currentUser)
-
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null)
     const [company, setCompany] = useState(null)
@@ -33,8 +31,8 @@ const CompanyDetail = () => {
         async function getCompany() {
 
             try {
+
                 let company = await currentUser.apiHelper.getCompany(handle);
-                console.log(company)
                 setCompany(company);
                 setJobs(company.jobs)
 
@@ -53,8 +51,6 @@ const CompanyDetail = () => {
 
     const handleSearch = async (data) => {
 
-        console.log(data)
-
         if (!data.searchTerms){
 
             let jobs = company.jobs
@@ -62,8 +58,7 @@ const CompanyDetail = () => {
 
         } else {
 
-            let jobs = company.jobs.filter((job) => job.title.includes(data.searchTerms))
-            console.log(jobs)
+            let jobs = company.jobs.filter((job) => job.title.toLowerCase().includes(data.searchTerms.toLowerCase()))
             setJobs([...jobs])
 
         }
