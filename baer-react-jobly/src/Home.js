@@ -12,9 +12,16 @@ const Home = () => {
 
         return (
 
-            <div>
+            <div className="List">
 
-                <span>Welcome back {currentUser.firstName}!</span>
+            <div className="Card center">
+
+                <h1>Welcome back {currentUser.firstName}!</h1>
+                <h3>Start browsing: </h3>
+                <div><NavLink exact="true" to={'/companies'}>Companies</NavLink></div>
+                <div><NavLink exact="true" to={'/jobs'}>Jobs</NavLink></div>
+
+            </div>
 
             </div>
 
@@ -23,10 +30,14 @@ const Home = () => {
 
     return (
 
-        <div>
-            <div>No Job? - No worries...</div>
+        <div className="List">
+
+        <div className="Card center">
+            <h1>No Job? - No worries...</h1>
                 <NavLink exact="true" to={'/login'}> Login </NavLink>
             <span>to get started.</span>
+        </div>
+
         </div>
 
     )

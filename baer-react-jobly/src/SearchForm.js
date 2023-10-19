@@ -50,7 +50,7 @@ const SearchForm = ( {handleSearch} ) => {
 
     return (
 
-        <form onSubmit={handleSubmit}>
+        <form className="Card" onSubmit={handleSubmit}>
 
             <label hidden="hidden" htmlFor="searchTerms">Search: </label>
             <input

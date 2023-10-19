@@ -13,9 +13,9 @@ function NavBar() {
     if (currentUser.token) {
 
         return(
-            <div className="navbar">
+            <div className="NavBar">
 
-                <h2 className="wordmark">Jobly.</h2>
+                <h2 className="wordmark"><NavLink exect="true" to={'/'}>Jobly.</NavLink></h2>
     
                 <NavLink exact="true" to={'/companies'}>Companies</NavLink>
                 <NavLink exact="true" to={'/jobs'}>Jobs</NavLink>
@@ -29,9 +29,9 @@ function NavBar() {
     }
 
     return(
-        <div className="navbar">
+        <div className="NavBar">
 
-            <h2 className="wordmark">Jobly.</h2>
+            <h2 className="wordmark"><NavLink exect="true" to={'/'}>Jobly.</NavLink></h2>
 
             <NavLink exact="true" to={'/login'}>Log In</NavLink>
             <NavLink exact="true" to={'/signup'}>Sign Up</NavLink>

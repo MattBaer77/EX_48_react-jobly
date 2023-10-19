@@ -66,7 +66,7 @@ const ProfileEditForm = () => {
 
     return (
 
-        <div className="StandAloneForm">
+        <div className="Card">
 
         <p className="Error">{error}</p>
         <p className="Success">{success}</p>

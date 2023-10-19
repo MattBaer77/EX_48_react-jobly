@@ -67,9 +67,11 @@ const SignupForm = () => {
 
     return (
 
-        <div className="StandAloneForm">
+        <div className="List">
 
-        <p className="Error">{error}</p>
+        <div className="Card StandAloneForm">
+
+        {error && <p className="Error">{error}</p>}
 
         <form onSubmit={handleSubmit}>
 
@@ -127,6 +129,7 @@ const SignupForm = () => {
 
         </form>
 
+        </div>
         </div>
 
     )

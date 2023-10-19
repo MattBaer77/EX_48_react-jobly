@@ -63,9 +63,11 @@ const LoginForm = () => {
 
     return (
 
-        <div className="StandAloneForm">
+        <div className="List">
+
+        <div className="Card StandAloneForm">
             
-        <p className="Error">{error}</p>
+        {error && <p className="Error">{error}</p>}
 
         <form onSubmit={handleSubmit}>
 
@@ -94,24 +96,9 @@ const LoginForm = () => {
         </form>
 
         </div>
+        </div>
 
     )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
 

@@ -1,4 +1,4 @@
-.navbar {
+.NavBar {
 
     display: flex;
     align-items: center;
@@ -10,14 +10,14 @@
 
 }
 
-.navbar a {
+.NavBar a {
     font-family: sans-serif;
     text-decoration: none;
     color: white;
     margin: 10px;
 }
 
-.navbar a:hover {
+.NavBar a:hover {
     text-decoration: underline;
 }
 
@@ -25,5 +25,11 @@
 
     color:white;
     margin-right: auto;
+
+}
+
+.wordmark a:hover {
+    
+    text-decoration: none;
 
 }
