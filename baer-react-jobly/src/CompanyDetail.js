@@ -92,6 +92,7 @@ const CompanyDetail = () => {
             <SearchForm handleSearch={handleSearch}/>
 
             {jobs.map(j => <JobCard key={j.id} job={j}/>)}
+            {jobs.length < 1 && <h2>No jobs match your search criteria.</h2>}
 
         </div>
     )

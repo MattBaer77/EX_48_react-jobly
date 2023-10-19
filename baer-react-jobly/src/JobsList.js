@@ -77,6 +77,12 @@ const JobsList = () =>{
 
     }
 
+    if (isLoading) {
+
+        return <p>Loading Jobs...</p>
+
+    }
+
     if (jobs.length === 0) {
         return (
 
@@ -89,12 +95,6 @@ const JobsList = () =>{
             </div>
 
         )
-
-    }
-
-    if (isLoading) {
-
-        return <p>Loading Jobs...</p>
 
     }
 

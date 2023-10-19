@@ -76,6 +76,12 @@ const CompaniesList = () => {
 
     }
 
+    if (isLoading) {
+
+        return <p>Loading Companies...</p>
+
+    }
+
     if (companies.length === 0) {
         return (
 
@@ -88,12 +94,6 @@ const CompaniesList = () => {
             </div>
 
         )
-
-    }
-
-    if (isLoading) {
-
-        return <p>Loading Companies...</p>
 
     }
 
