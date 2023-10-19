@@ -24,7 +24,7 @@ const Home = () => {
     return (
 
         <div>
-            <span>No Job? - No worries...</span>
+            <div>No Job? - No worries...</div>
                 <NavLink exact="true" to={'/login'}> Login </NavLink>
             <span>to get started.</span>
         </div>
